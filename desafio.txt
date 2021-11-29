@@ -1,0 +1,52 @@
+Desafio 
+
+Aplicação exemplo:
+
+Trata-se de uma aplicação Django bastante simples, que fornece uma API REST
+para CRUD de dados de um blog. Essa API pode ser exercitada através da interface padrão
+do Django Rest Framework (http://localhost:8000/)
+
+1) Tarefa: Empacotar a aplicação usando Docker
+	Implemente um mecanismo para implantação da aplicação tal que a aplicação e o
+banco de dados executem em containers separados.
+	Crie uma imagem docker, que seria adequada para a utilização em um ambiente de
+produção real. Assuma que a aplicação já está parametrizada para um ambiente de
+produção.
+	Crie um arquivo README explicando uma sequência simples de passos para recriar
+o setup completo em uma máquina Linux que tenha apenas Docker e docker-compose.
+Documente como colocar o ambiente em operação.
+
+2) Descreva como você implementaria as sugestões abaixo relacionadas e que
+tecnologias usaria:
+	● Implementar mecanismo de monitoramento de health check do serviço;
+	● Automatizar o deploy utilizando alguma ferramenta para CI/CD;
+	● Situação 1:
+	  ○ Descrição: Em uma arquitetura de micro serviços, criou-se uma
+dependência entre dois micro serviços. Digamos ms1 e ms2. Em uma ação
+do usuário no ms1, este depende de uma resposta do ms2 para que a
+consistência dos seus dados seja garantida, no entanto, este processo no
+ms2 é extremamente custoso.
+	  ○ Requisito 1: A resposta do ms1 ao usuário deve ser rápida, apresentando
+imediatamente uma mensagem ao usuário, dizendo que a requisição está em
+processamento.
+	  ○ Requisito 2: Garantir a consistência dos dados. O ms1 só podem dar como
+consistente os dados, e fazer uma atualização em seu banco de dados
+quando tiver certeza que os dados estão atualizados também no ms2.
+	  ○ Restrições: Cada micro serviço tem acesso apenas ao seu banco de dados
+isolado.
+○ Problema: Atualmente, o processo muitas vezes nunca é finalizado, pois em
+alguns momentos existe indisponibilidade do ms2 na hora da chamada, e
+nada é feito.
+
+● Situação 2:
+○ Descrição: Uma loja virtual famosa e muito acessada está precisando
+comunicar seus clientes sobre uma promoção relâmpago. Esta informação
+deverá ser enviada através de dois canais:
+1) Via e-mail para os usuários cadastrados na newsletter
+2) Via push notification para os usuários que baixaram o app mobile;
+A promoção consiste em um desconto de 50% para as compras realizadas
+em até 15 minutos após o cadastro da promoção no sistema da loja virtual.
+○ Considerações: O total de clientes a ser notificado é de aproximadamente 2
+milhões (em cada canal);
+○ Requisito: Garantir que todos os clientes sejam notificados em tempo hábil
+para que eles consigam aproveitar o desconto relâmpago.
